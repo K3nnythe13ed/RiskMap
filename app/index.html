@@ -1,0 +1,123 @@
+<html>
+
+<head>
+	<title>Weather and Risk-Map</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<link href="//cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.css" rel="stylesheet" type="text/css" />
+	 <link href="bower_components/leaflet-draw/dist/leaflet.draw.css" rel="stylesheet" type="text/css" /> 
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+	<style>
+		#map {
+			height: 85%;
+			width: 85%;
+		}
+		
+		#basemaps-wrapper {
+			position: absolute;
+			top: 70px;
+			right: 16%;
+			z-index: 400;
+			background: white;
+			padding: 10px;
+		}
+		
+		#speed-wrapper {
+			position: absolute;
+			bottom: 25%;
+			right: 16%;
+			z-index: 400;
+			background: white;
+			padding: 10px;
+			margin: 5px;
+		}
+		
+		#fade-wrapper {
+			position: absolute;
+			bottom: 25%;
+			right: 16%;
+			z-index: 400;
+			background: white;
+			padding: 10px;
+		}
+		
+		#timeline {
+			height: 10%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div id="map"></div>
+
+
+	<div id="timeline"></div>
+
+
+	<script>
+		map = L.map('map').setView([50.7343800, 7.0954900], 7);
+		
+		 </script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.js"></script>
+	<script src="plugins/Playback/dist/LeafletPlayback.js"></script>
+	<script src="bower_components/leaflet-draw/dist/leaflet.draw.js"></script>
+
+	<script src="data/demo-tracks.js"></script>
+	<!-- <script src="data/mt-washington.js"></script> -->
+
+
+
+
+
+	<script src="scripts/leaflet-playback-marker.js"></script>
+	<script src="scripts/draw.js"></script>
+	<!-- <script src="scripts/leaflet-marker.js"></script> -->
+
+	<script src="scripts/layer_style.js"></script>
+
+
+	<div id="basemaps-wrapper" class="leaflet-bar">
+		<table>
+			<tr>
+				<td>
+					<label>Map Layer</label>
+				</td>
+				<td>
+
+					<select name="basemaps" id="basemaps" onChange="changeLayer(this.value)">
+						<option value="1">Main</option>
+						<option value="2">Rain</option>
+						<option value="3">Clouds</option>
+						<option value="4">Precipitation</option>
+						<option value="5">Pressure</option>
+						<option value="6">Snow</option>
+						<option value="7">Temperature</option>
+						<option value="8">Windspeed</option>
+
+					</select>
+				</td>
+			</tr>
+			<tr><td><input type="button" value="slower" onclick="changeSlower()"></td><td><input type="button" value="faster" onclick="changeFaster()"></td>
+			</tr>
+			<tr>
+				<td>
+
+					<label>Fade Out Vessels</label>
+				</td>
+				<td>
+					<input type='checkbox' onclick="handleFadeout(this)">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>
