@@ -50,7 +50,7 @@ $(function () {
     // Playback options
     var playbackOptions = {
 
-        playControl: true,
+        
         dateControl: true,
         orientIcons: true,
         popups: true,
@@ -175,5 +175,17 @@ function changeSlower() {
                 }
             }
         }
+    }
+}
+function changePlay()
+{
+    if(playbackitem.isPlaying())
+    {
+        playbackitem.stop();
+
+    }
+    else{
+        
+        playbackitem.start();
     }
 }
