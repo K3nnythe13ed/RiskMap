@@ -1,13 +1,10 @@
 $(function () {
-
+    //call function on start
     var datavalue = demoTracks
     var bigship = L.icon({
         iconUrl: '../images/marker.png',
-
         iconSize: [8, 13], // size of the icon
-
         iconAnchor: [4, 13], // point of the icon which will correspond to marker's location
-
         popupAnchor: [0, -40] // point from which the popup should open relative to the iconAnchor
     });
 
@@ -43,18 +40,14 @@ $(function () {
     */
 
 
-    // =====================================================
-    // =============== Playback ============================
-    // =====================================================
-    
     // Playback options
     var playbackOptions = {
 
-        
+
         dateControl: true,
         orientIcons: true,
         popups: true,
-        
+
 
         // layer and marker options
         layer: {
@@ -86,25 +79,17 @@ $(function () {
                 return result;
             },
             smoothFactor: 1
-         
+
         }
 
     };
- /*  var polyline = L.polyline(, {
-                        color: 'blue',
-                        weight: 1,
-                        opacity: 0.2,
-                        smoothFactor: 1
-                    }).addTo(map);*/
 
     // Initialize playback
     var playback = new L.Playback(map, null, onPlaybackTimeChange, playbackOptions);
     SaveMyPlayback(playback);
     playback.setData(datavalue);
     playback.setSpeed(1);
-
-    // Uncomment to test data reset;
-    //playback.setData(blueMountain);    
+ 
 
     // Set timeline time change event, so cursor is set after moving custom time (blue)
     timeline.on('timechange', onCustomTimeChange);
@@ -114,7 +99,6 @@ $(function () {
         timeline.setCustomTime(new Date(ms));
     };
 
-    // 
     function onCustomTimeChange(properties) {
         if (!playback.isPlaying()) {
             playback.setCursor(properties.time.getTime());
@@ -124,20 +108,20 @@ $(function () {
 });
 
 var playbackitem;
+//change Speed of playback
 function changeSpeed(value) {
-
-
-
     playbackitem.setSpeed(parseFloat(value));
 }
+//use to save playback for later use
 function SaveMyPlayback(playback) {
     playbackitem = playback;
 }
-function handleFadeout(cb)
-{
+//not used yet
+function handleFadeout(cb) {
 
 
 }
+//change speed of playback by clicking the faster button
 function changeFaster() {
     var speed = playbackitem.getSpeed();
     if (speed <= 1) {
@@ -158,14 +142,15 @@ function changeFaster() {
         }
     }
 }
+//change speed of playback by clicking the slower button
 function changeSlower() {
     var speed = playbackitem.getSpeed();
     if (speed >= 100) {
         playbackitem.setSpeed(speed - 90);
     }
     else {
-        if (speed >=10 ) {
-            playbackitem.setSpeed(speed - 6 );
+        if (speed >= 10) {
+            playbackitem.setSpeed(speed - 6);
         } else {
             if (speed >= 4) {
                 playbackitem.setSpeed(speed - 2);
@@ -178,15 +163,14 @@ function changeSlower() {
         }
     }
 }
-function changePlay()
-{
-    if(playbackitem.isPlaying())
-    {
+//change play/pause by clicking the play/pause-button
+function changePlay() {
+    if (playbackitem.isPlaying()) {
         playbackitem.stop();
 
     }
-    else{
-        
+    else {
+
         playbackitem.start();
     }
 }
