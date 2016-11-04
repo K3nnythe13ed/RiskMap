@@ -93,6 +93,30 @@ var demoLocations = {
     "AAL_PreCat_FL":"",
     "AAL_PreCat_WS":""
     }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [
+           50.7575752,
+           7.0895148
+           
+       ]
+    },
+    "properties": {
+    "LocID":5,
+    "OE":"DE",
+    "AccountName":"Self Creation",
+    "Entire":", NL,  0,  0,  0",
+    "Exp_TIV":4000000,
+    "ML_AGCS_Share":"",
+    "MR_RISK_SCORE":2,
+    "AddrMatch":"",
+    "AAL_PreCat_EQ":"",
+    "AAL_PreCat_FL":"",
+    "AAL_PreCat_WS":""
+    }
   }
 ]
 }

@@ -1,25 +1,27 @@
 $(function addMarkerLayer() {
-    test();
+    CreateMapLayerMarker();
+    //call CreateMapLayerMarker on start
 })
 
 
 var checkLayerIsActive = false;
 var markerLayer = L.layerGroup();
-function test() {
-
+function CreateMapLayerMarker() {
+    //foreach location in demoLocations cakk onEachFeature
     var datalocations = L.geoJson(demoLocations, {
         onEachFeature: onEachFeature
     })
+    //add markerLayer to Map
     map.addLayer(markerLayer);
 
 
-
+    // create new Marker
     function onEachFeature(feature, layer) {
         var WhS = L.icon({
             iconUrl: 'images/warehousemarker.png',
-            iconSize: [38, 38], // size of the icon
-            iconAnchor: [19, 38], // point of the icon which will correspond to marker's location
-            popupAnchor: [0, -50] // point from which the popup should open relative to the iconAnchor
+            iconSize: [38, 38], 
+            iconAnchor: [19, 38], 
+            popupAnchor: [0, -50] 
         });
         var WhM = L.icon({
             iconUrl: 'images/warehousemarker.png',
@@ -35,14 +37,15 @@ function test() {
         });
         var WhSS = L.icon({
             iconUrl: 'images/warehousemarker.png',
-            iconSize: [18, 18], // size of the icon
-            iconAnchor: [9, 18], // point of the icon which will correspond to marker's location
-            popupAnchor: [0, -50] // point from which the popup should open relative to the iconAnchor
+            iconSize: [18, 18], 
+            iconAnchor: [9, 18], 
+            popupAnchor: [0, -50] 
         });
         var lat = feature.geometry.coordinates[0];
         var lon = feature.geometry.coordinates[1];
         var popupContent;
         var mark;
+        //use icon depending on Exp_TIV
         if (feature.properties.Exp_TIV >= 10000000) {
             mark = L.marker([lat, lon], { icon: WhB });
 
@@ -63,7 +66,7 @@ function test() {
                 }
             }
         }
-
+        //format Exp_TIV 
         function formatThousand(nStr) {
             var sep = '.';
             nStr += '';
@@ -90,9 +93,10 @@ function test() {
 
     }
 
-
+    // on zoom removeLayer markerLayer. 
+    // exception: Checkbox CheckWarehouse has been checked
     map.on('zoomend', function () {
-        if (map.getZoom() <= 5 && !(checkLayerIsActive)) {
+        if (map.getZoom() <= 5 && !(document.getElementById("CheckWarehouse").checked)) {
             if (typeof (markerLayer) != "undefined") {
 
                 map.removeLayer(markerLayer);
@@ -108,9 +112,9 @@ function test() {
     });
 
 }
+// removeLayer/addLayer markerLayer whenever CheckWarehouse has been checked
 function handleLocationLayer(checkbox) {
-    checkLayerIsActive = document.getElementById("CheckWarehouse").checked;
-    if (map.getZoom() < 5 && !(checkLayerIsActive)) {
+    if (map.getZoom() < 5 && !(document.getElementById("CheckWarehouse").checked)) {
         if (typeof (markerLayer) != "undefined") {
 
             map.removeLayer(markerLayer);

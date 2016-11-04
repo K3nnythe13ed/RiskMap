@@ -84,7 +84,8 @@ $(function () {
                 }
 
                 return result;
-            }
+            },
+            smoothFactor: 1
          
         }
 
