@@ -1,5 +1,6 @@
 # RiskMap
 Requires:
+- npm install -g bower
 - Leaflet
-- Leaflet-Draw
-- Leaflet-Playback
+- Leaflet-Draw  (bower install leaflet-draw)
+- Leaflet-Playback (git submodule)
