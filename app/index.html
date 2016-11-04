@@ -20,34 +20,33 @@
 			right: 16%;
 			z-index: 400;
 			background: white;
-			padding: 10px;
+			padding: 5px;
 		}
 		
-		#speed-wrapper {
-			position: absolute;
-			bottom: 25%;
-			right: 16%;
-			z-index: 400;
-			background: white;
-			padding: 10px;
-			margin: 5px;
-		}
-		
-		#fade-wrapper {
-			position: absolute;
-			bottom: 25%;
-			right: 16%;
-			z-index: 400;
-			background: white;
-			padding: 10px;
-		}
+	
 		
 		#timeline {
 			height: 10%;
 			left: 0;
 			right: 0;
 			bottom: 0;
+
+
 		}
+		input.button-add {
+			background-image: url(/images/buttons/add.png); /* 16px x 16px */
+			background-color: transparent; /* make the button transparent */
+			background-repeat: no-repeat;  /* make the background image appear only once */
+			background-position: 0px 0px;  /* equivalent to 'top left' */
+			border: none;           /* assuming we don't want any borders */
+			cursor: pointer;        /* make the cursor like hovering over an <a> element */
+			height: 16px;           /* make this the size of your image */
+			padding-left: 16px;     /* make text start to the right of the image */
+			vertical-align: middle; /* align the text vertically centered */
+		}
+
+
+
 	</style>
 </head>
 
@@ -104,7 +103,7 @@
 					</select>
 				</td>
 			</tr>
-			<tr><td><input type="button" value="slower" onclick="changeSlower()"></td><td><input type="button" value="faster" onclick="changeFaster()"></td>
+			<tr><td><input type="button" value="slower" onclick="changeSlower()"></td><td></td><td><input type="button" value="faster" onclick="changeFaster()"></td>
 			</tr>
 			<tr>
 				<td>

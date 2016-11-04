@@ -18,6 +18,7 @@ function createLayer(key) {
         {
             attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
             maxZoom: 18,
+            opacity: 0.9
             
         })
 
