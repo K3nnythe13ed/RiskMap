@@ -1,0 +1,3 @@
+[submodule "plugins/Playback"]
+	path = plugins/Playback
+	url = https://github.com/hallahan/LeafletPlayback.git
