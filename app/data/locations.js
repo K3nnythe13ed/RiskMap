@@ -1,27 +1,30 @@
-var location1 = {
+var demoLocations = {
+   "type": "FeatureCollection",
+   "features": [
+  {
     "type": "Feature",
     "geometry": {
        "type": "Point",
        "coordinates":  
-       [53.543712,
-           9.988552]
+           [53.543712,
+           9.988552] 
+        
     },
     "properties": {
-    "LocID":"1",
+    "LocID":1,
     "OE":"DE",
     "AccountName":"Test 1",
     "Entire":", DE,  0,  0,  0",
-    "Exp_TIV":"1000000",
+    "Exp_TIV":1000000,
     "ML_AGCS_Share":"",
-    "MR_RISK_SCORE":"4",
+    "MR_RISK_SCORE":4,
     "AddrMatch":"",
     "AAL_PreCat_EQ":"",
     "AAL_PreCat_FL":"",
     "AAL_PreCat_WS":""
     }
-  };
-  
-  var location2 = {
+  },
+  {
     "type": "Feature",
     "geometry": {
        "type": "Point",
@@ -31,21 +34,20 @@ var location1 = {
        ]
     },
     "properties": {
-    "LocID":"2",
+    "LocID":2,
     "OE":"US",
     "AccountName":"Test 2",
     "Entire":", US,  0,  0,  0",
-    "Exp_TIV":"5000000",
+    "Exp_TIV":5000000,
     "ML_AGCS_Share":"",
-    "MR_RISK_SCORE":"3",
+    "MR_RISK_SCORE":3,
     "AddrMatch":"",
     "AAL_PreCat_EQ":"",
     "AAL_PreCat_FL":"",
     "AAL_PreCat_WS":""
     }
-  };
-
-  var location3 = {
+  },
+  {
     "type": "Feature",
     "geometry": {
        "type": "Point",
@@ -55,21 +57,20 @@ var location1 = {
        ]
     },
     "properties": {
-    "LocID":"3",
+    "LocID":3,
     "OE":"DE",
     "AccountName":"Test 3",
     "Entire":", CN,  0,  0,  0",
-    "Exp_TIV":"7500000",
+    "Exp_TIV":7500000,
     "ML_AGCS_Share":"",
-    "MR_RISK_SCORE":"4",
+    "MR_RISK_SCORE":4,
     "AddrMatch":"",
     "AAL_PreCat_EQ":"",
     "AAL_PreCat_FL":"",
     "AAL_PreCat_WS":""
     }
-  };
-
-var location4 = {
+  },
+  {
     "type": "Feature",
     "geometry": {
        "type": "Point",
@@ -80,18 +81,24 @@ var location4 = {
        ]
     },
     "properties": {
-    "LocID":"4",
+    "LocID":4,
     "OE":"DE",
     "AccountName":"Test 4",
     "Entire":", NL,  0,  0,  0",
-    "Exp_TIV":"10000000",
+    "Exp_TIV":10000000,
     "ML_AGCS_Share":"",
-    "MR_RISK_SCORE":"4",
+    "MR_RISK_SCORE":4,
     "AddrMatch":"",
     "AAL_PreCat_EQ":"",
     "AAL_PreCat_FL":"",
     "AAL_PreCat_WS":""
     }
-  };
-  var demoLocations = [location1, location2, location3, location4];
+  }
+]
+}
+
+
+
+
+
 

@@ -61,11 +61,12 @@
 	<script src="data/locations.js"></script>
 	<!-- <script src="data/mt-washington.js"></script> -->
 
-
-
+	
 
 
 	<script src="scripts/leaflet-playback-marker.js"></script>
+	<script src="scripts/show-location.js"></script>
+
 	<script src="scripts/draw.js"></script>
 	<!-- <script src="scripts/leaflet-marker.js"></script> -->
 
@@ -102,6 +103,15 @@
 				</td>
 				<td>
 					<input type='checkbox' onclick="handleFadeout(this)">
+				</td>
+			</tr>
+			<tr>
+				<td>
+
+					<label>Show Locations</label>
+				</td>
+				<td>
+					<input type='checkbox' onclick="handleLocationLayer(this)" id="CheckWarehouse">
 				</td>
 			</tr>
 		</table>
