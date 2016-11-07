@@ -4042,8 +4042,8 @@ var tillicum = {
     ]
   },
   "properties": {
-    "title" : "tillicum",
-    "path_options" : { "color" : "red" },
+    "title": "tillicum",
+    "path_options": { "color": "red" },
     "time": [
       1369786338000,
       1369786340000,
@@ -14175,8 +14175,8 @@ var vessel1 = {
     ]
   },
   "properties": {
-    "title" : "tillicum",
-    "path_options" : { "color" : "red" },
+    "title": "tillicum",
+    "path_options": { "color": "red" },
     "time": [
       1369786338000,
       1369786340000,

@@ -335,6 +335,7 @@ L.Playback.Track = L.Class.extend({
                 var offset = [delta[0] * ratio, delta[1] * ratio];
                 return [start[0] + offset[0], start[1] + offset[1]];
             } catch (e) {
+                
                 console.log('err: cant interpolate a point');
                 console.log(['start', start]);
                 console.log(['end', end]);

@@ -1,6 +1,6 @@
 $(function () {
     //call function on start
-    var datavalue = demoTracks
+    var datavalue = demoAis;
     var bigship = L.icon({
         iconUrl: '../images/marker.png',
         iconSize: [8, 13], // size of the icon
@@ -10,10 +10,11 @@ $(function () {
 
     // Get start/end times
     var startTime = new Date(datavalue[0].properties.time[0]);
-
-
-    var endTime = new Date(datavalue[1].properties.time[datavalue[1].properties.time.length - 1]);
-
+    
+alert(startTime);
+alert(datavalue[0].properties.time.length)
+    var endTime = new Date(datavalue[0].properties.time[datavalue[0].properties.time.length - 1]);
+alert(endTime);
 
     // Create a DataSet with data
     var timelineData = new vis.DataSet([{ start: startTime, end: endTime, content: 'AIS Tracking' }]);
@@ -47,7 +48,7 @@ $(function () {
         dateControl: true,
         orientIcons: true,
         popups: true,
-
+        maxInterpolationTime: 2*60*1000,
 
         // layer and marker options
         layer: {
