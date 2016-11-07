@@ -11,10 +11,9 @@ $(function () {
     // Get start/end times
     var startTime = new Date(datavalue[0].properties.time[0]);
     
-alert(startTime);
-alert(datavalue[0].properties.time.length)
+    alert(datavalue[2].properties.time.length - 1)
+    alert(datavalue[2].geometry.coordinates.length - 1)
     var endTime = new Date(datavalue[0].properties.time[datavalue[0].properties.time.length - 1]);
-alert(endTime);
 
     // Create a DataSet with data
     var timelineData = new vis.DataSet([{ start: startTime, end: endTime, content: 'AIS Tracking' }]);
