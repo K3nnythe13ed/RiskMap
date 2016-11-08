@@ -13,7 +13,7 @@ $(function () {
         iconUrl: '../images/marker.png',
         iconSize: [8, 13], // size of the icon
         iconAnchor: [4, 13], // point of the icon which will correspond to marker's location
-        popupAnchor: [0, -40] // point from which the popup should open relative to the iconAnchor
+        popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
     });
 
     for (i = 1; i < datavalue.length; i++) {
