@@ -2,11 +2,11 @@ $(function () {
     //call function on start
     var datavalue = demoAis;
 
-  alert(datavalue[datavalue.length-1].geometry.coordinates.length - 1)
-    alert(datavalue[datavalue.length-1].properties.time.length - 1)
+    alert(datavalue[datavalue.length - 1].geometry.coordinates.length - 1)
+    alert(datavalue[datavalue.length - 1].properties.time.length - 1)
     var newdate = datavalue[0].properties.time[0]
-    
-  
+
+
     var newendTime = datavalue[0].properties.time[datavalue[0].properties.time.length - 1]
 
     var bigship = L.icon({
@@ -15,24 +15,21 @@ $(function () {
         iconAnchor: [4, 13], // point of the icon which will correspond to marker's location
         popupAnchor: [0, -40] // point from which the popup should open relative to the iconAnchor
     });
-    
+
     for (i = 1; i < datavalue.length; i++) {
-        alert(newdate)
-        alert(datavalue[i].properties.time[0])
-        if(newdate > datavalue[i].properties.time[0])
-        {   
+
+        if (newdate > datavalue[i].properties.time[0]) {
             newdate = datavalue[i].properties.time[0]
         }
-        if(newendTime < datavalue[i].properties.time[datavalue[i].properties.time.length - 1])
-        {
+        if (newendTime < datavalue[i].properties.time[datavalue[i].properties.time.length - 1]) {
             newendTime = datavalue[i].properties.time[datavalue[i].properties.time.length - 1]
         }
-        
-} 
+
+    }
     var startTime = new Date(newdate);
     var endTime = new Date(newendTime);
     // Get start/end times
-    
+
 
     // Create a DataSet with data
     var timelineData = new vis.DataSet([{ start: startTime, end: endTime, content: 'AIS Tracking' }]);
@@ -66,7 +63,7 @@ $(function () {
         dateControl: true,
         orientIcons: true,
         popups: true,
-        maxInterpolationTime: 2*60*1000,
+        maxInterpolationTime: 2 * 60 * 1000,
 
         // layer and marker options
         layer: {
@@ -108,7 +105,7 @@ $(function () {
     SaveMyPlayback(playback);
     playback.setData(datavalue);
     playback.setSpeed(1);
- 
+
 
     // Set timeline time change event, so cursor is set after moving custom time (blue)
     timeline.on('timechange', onCustomTimeChange);
