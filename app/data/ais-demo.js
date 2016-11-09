@@ -67479,6 +67479,8 @@ var templateship = {
 };
 
 
+
+
 var demoAis = [
   ship1,
   ship2,
