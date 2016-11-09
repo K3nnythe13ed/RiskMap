@@ -52,10 +52,8 @@ L.Playback.Util = L.Class.extend({
         },
         properties: {
           time: [],
-          speed: [],
-          altitude: []
+          mmsi: [],
         },
-        bbox: []
       };
       var xml = $.parseXML(gpx);
       var pts = $(xml).find('trkpt');
@@ -72,6 +70,7 @@ L.Playback.Util = L.Class.extend({
         var props = geojson.properties;
         var time = props.time;
         var altitude = geojson.properties.altitude;
+        var mmsi = geojson.properties.mmsi;
 
         coords.push([lng,lat]);
         time.push(t);
@@ -122,7 +121,8 @@ L.Playback.MoveableMarker = L.Marker.extend({
     
     getPopupContent: function() {
         if (this.popupContent !== ''){
-            return '<b>' + this.popupContent + '</b><br/>';
+            return '<b>' + this.popupContent + '</b><br/>'
+
         }
         
         return '';
