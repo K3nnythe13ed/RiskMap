@@ -1,9 +1,6 @@
 $(function () {
     //call function on start
     var datavalue = demoAis;
-
-    alert(datavalue[datavalue.length - 1].geometry.coordinates.length - 1)
-    alert(datavalue[datavalue.length - 1].properties.time.length - 1)
     var newdate = datavalue[0].properties.time[0]
 
 

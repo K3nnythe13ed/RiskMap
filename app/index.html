@@ -4,7 +4,7 @@
 	<title>Weather and Risk-Map</title>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	<link href="//cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.css" rel="stylesheet" type="text/css" />
-	 <link href="bower_components/leaflet-draw/dist/leaflet.draw.css" rel="stylesheet" type="text/css" /> 
+	<link href="bower_components/leaflet-draw/dist/leaflet.draw.css" rel="stylesheet" type="text/css" />
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
@@ -23,19 +23,12 @@
 			padding: 5px;
 		}
 		
-	
-		
 		#timeline {
 			height: 10%;
 			left: 0;
 			right: 0;
 			bottom: 0;
-
-
 		}
-	
-
-
 	</style>
 </head>
 
@@ -53,16 +46,23 @@
 		
 		 </script>
 
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.js"></script>
 	<script src="plugins/Playback/dist/LeafletPlayback.js"></script>
 	<script src="bower_components/leaflet-draw/dist/leaflet.draw.js"></script>
 	<script src="bower_components/elasticsearch/elasticsearch.js"></script>
-
+	<script>
+		var client = elasticsearch.Client({
+			host: 'localhost:9200',
+			log: "trace",
+			sniffOnStart: true
+		});
+	</script>
 	<!--<script src="data/demo-tracks.js"></script>-->
 	<script src="data/locations.js"></script>
 	<script src="data/ais-demo.js"></script>
 
-	
+
 	<script src="scripts/elasticsearch.js"></script>
 
 	<script src="scripts/leaflet-playback-marker.js"></script>
@@ -95,7 +95,7 @@
 					</select>
 				</td>
 			</tr>
-			
+
 			<tr>
 				<td>
 
@@ -116,8 +116,12 @@
 			</tr>
 		</table>
 		<table>
-			<tr><td><input type="button" value="slower" onclick="changeSlower()"></td><td><input type="button" value="Play/Pause" onclick="changePlay()"></td><td><input type="button" value="faster" onclick="changeFaster()"></td>
-			</tr></table>
+			<tr>
+				<td><input type="button" value="slower" onclick="changeSlower()"></td>
+				<td><input type="button" value="Play/Pause" onclick="changePlay()"></td>
+				<td><input type="button" value="faster" onclick="changeFaster()"></td>
+			</tr>
+		</table>
 	</div>
 
 </body>
