@@ -114,7 +114,7 @@ function CreateMapLayerMarker() {
 }
 // removeLayer/addLayer markerLayer whenever CheckWarehouse has been checked
 function handleLocationLayer(checkbox) {
-    if (map.getZoom() < 5 && !(document.getElementById("CheckWarehouse").checked)) {
+    if (map.getZoom() <= 5 && !(document.getElementById("CheckWarehouse").checked)) {
         if (typeof (markerLayer) != "undefined") {
 
             map.removeLayer(markerLayer);

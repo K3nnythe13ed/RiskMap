@@ -1,0 +1,17 @@
+{
+  "name": "topojson",
+  "description": "An extension to GeoJSON that encodes topology.",
+  "main": "topojson.js",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/mbostock/topojson-bower",
+  "version": "1.5.4",
+  "_release": "1.5.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.4",
+    "commit": "58c3c5c1fae42faae10742f84ec8cdd16d434d18"
+  },
+  "_source": "https://github.com/mbostock/topojson-bower.git",
+  "_target": "~1.5.2",
+  "_originalSource": "topojson"
+}
