@@ -1,0 +1,141 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 4541,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "ais-2016.11.09",
+        "_type": "vessel",
+        "_id": "244630536",
+        "_score": 1,
+        "_source": {
+          "LOCATION": {
+            "lon": 4.80964,
+            "lat": 51.70987
+          },
+          "A": 7,
+          "DRAUGHT": 0,
+          "B": 32,
+          "C": 2,
+          "D": 5,
+          "source": "/log/2.json",
+          "type": "log",
+          "HEADING": 511,
+          "MMSI": 244630536,
+          "@version": "1",
+          "beat": {
+            "hostname": "0da5fe5e1668",
+            "name": "0da5fe5e1668"
+          },
+          "host": "0da5fe5e1668",
+          "COG": 360,
+          "TYPE": 69,
+          "NAVSTAT": 0,
+          "offset": 1100,
+          "input_type": "log",
+          "SOG": 0,
+          "IMO": 0,
+          "NAME": "ZILVERMEEUW 2",
+          "tags": [
+            "beats_input_codec_json_applied"
+          ],
+          "CALLSIGN": "PF6915",
+          "ETA": "00-00 24:60",
+          "@timestamp": "2016-11-09T13:47:03.000Z",
+          "DEST": ""
+        }
+      },
+      {
+        "_index": "ais-2016.11.09",
+        "_type": "vessel",
+        "_id": "244670084",
+        "_score": 1,
+        "_source": {
+          "LOCATION": {
+            "lon": 4.00716,
+            "lat": 51.46059
+          },
+          "A": 89,
+          "DRAUGHT": 2.5,
+          "B": 11,
+          "C": 3,
+          "D": 6,
+          "source": "/log/2.json",
+          "type": "log",
+          "HEADING": 511,
+          "MMSI": 244670084,
+          "@version": "1",
+          "beat": {
+            "hostname": "0da5fe5e1668",
+            "name": "0da5fe5e1668"
+          },
+          "host": "0da5fe5e1668",
+          "COG": 96.3,
+          "TYPE": 99,
+          "NAVSTAT": 3,
+          "offset": 2707,
+          "input_type": "log",
+          "SOG": 0,
+          "IMO": 0,
+          "NAME": "CALENDULA 12",
+          "tags": [
+            "beats_input_codec_json_applied"
+          ],
+          "CALLSIGN": "PI3667",
+          "ETA": "08-19 20:16",
+          "@timestamp": "2016-11-09T13:47:55.000Z",
+          "DEST": "PERNIS"
+        }
+      },
+      {
+        "_index": "ais-2016.11.09",
+        "_type": "vessel",
+        "_id": "244730927",
+        "_score": 1,
+        "_source": {
+          "LOCATION": {
+            "lon": 4.48906,
+            "lat": 51.89856
+          },
+          "A": 54,
+          "DRAUGHT": 0.2,
+          "B": 8,
+          "C": 3,
+          "D": 3,
+          "source": "/log/2.json",
+          "type": "log",
+          "HEADING": 511,
+          "MMSI": 244730927,
+          "@version": "1",
+          "beat": {
+            "hostname": "0da5fe5e1668",
+            "name": "0da5fe5e1668"
+          },
+          "host": "0da5fe5e1668",
+          "COG": 78.7,
+          "TYPE": 79,
+          "NAVSTAT": 0,
+          "offset": 4048,
+          "input_type": "log",
+          "SOG": 0,
+          "IMO": 0,
+          "NAME": "GALATEA",
+          "tags": [
+            "beats_input_codec_json_applied"
+          ],
+          "CALLSIGN": "PD5852",
+          "ETA": "00-00 24:60",
+          "@timestamp": "2016-11-09T13:47:28.000Z",
+          "DEST": "ROTTERDAM"
+        }
+      }
+    ]
+  }
+}
