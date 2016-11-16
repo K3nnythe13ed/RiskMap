@@ -13,14 +13,14 @@ function getAllVessels(resp) {
             
         var pushdata = {
            
-            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon
+            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4:i+1
         }
            
             data1.push(pushdata);
         }
         dt = dynamicTable.config('vesselsearch', 
-                                 ['field1', 'field2', 'field3'], 
-                                 ['MMSI', 'LAT', 'LON'], //set to null for field names instead of custom header names
+                                 ['field4','field1', 'field2', 'field3'], 
+                                 ['Nr.', 'MMSI', 'LAT', 'LON'], //set to null for field names instead of custom header names
                                  'There are no items to list...');
         
     
@@ -63,7 +63,7 @@ function countVessels(callback, callback2, latlong) {
     client.search({
         index: 'ais-*',
         type: 'vessel',
-        size: 100,
+        size: 10000,
         body: {
 
             "query": {
