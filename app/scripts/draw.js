@@ -1,34 +1,36 @@
 
 
-var drawnItems = new L.FeatureGroup();
-map.addLayer(drawnItems);
+var editableLayers = new L.FeatureGroup();
+map.addLayer(editableLayers);
 
-// Initialise the draw control and pass it the FeatureGroup of editable layers
-var drawControl = new L.Control.Draw({
+var options = {
     edit: {
-        featureGroup: drawnItems,
-        
+        featureGroup: editableLayers //REQUIRED!!
     },
     draw:
     {
-    polyline: false,
-    polygon: false,
-    marker: false,
-    circle: false
+        polyline: false,
+        polygon: false,
+        marker: false,
+        circle: false
     }
-});
+};
+
+var drawControl = new L.Control.Draw(options);
 map.addControl(drawControl);
 
+map.on(L.Draw.Event.CREATED, function (e) {
 
-
-map.on('draw:created', function (e) {
-    var type = e.layerType,
-        layer = e.layer;
-        //on create do elasticsearch function countVessels input(function replaceTableValue as callback, layer latlongs)
-        countVessels(replaceTableValue, layer.getLatLngs())
         
+        var type = e.layerType,
+        layer = e.layer;
+        
+    //on create do elasticsearch function countVessels input(function replaceTableValue as callback, layer latlongs)
+    countVessels(replaceTableValue, getAllVessels, layer.getLatLngs())
 
+    editableLayers.addLayer(layer);
 
     // Do whatever else you need to. (save to db, add to map etc)
-    map.addLayer(layer);
 });
+    map.on('draw:deleted', update);
+// Initialise the draw control and pass it the FeatureGroup of editable layers

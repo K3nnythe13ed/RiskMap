@@ -1,35 +1,49 @@
 var allTitles = [];
 //get all Vessels in elasticsearch for later use
-function getAllVessels() {
-    const documents = [];
-    client.search({
-        index: 'ais-2016.11.09',
-        type: 'vessel',
-        size: 5
-    }, function (err, resp, _respcode) {
-
-
+    var dt;
+   
+function getAllVessels(resp) {
+    if(dt != undefined)
+    {
+        dt.clear();
+    }
+   var data1 =[]
+    
         for (let i = 0; i < resp.hits.hits.length; i++) {
-
-            documents[documents.length] = {
-
-                _index: resp.hits.hits[i]._index,
-                _type: resp.hits.hits[i]._type,
-                _id: resp.hits.hits[i]._id,
-                MMSI: resp.hits.hits[i]._source.MMSI,
-                LOCATION: resp.hits.hits[i]._source.LOCATION
-
-            };
-            allTitles.push(documents)
+            
+        var pushdata = {
+           
+            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon
         }
+           
+            data1.push(pushdata);
+        }
+        dt = dynamicTable.config('vesselsearch', 
+                                 ['field1', 'field2', 'field3'], 
+                                 ['MMSI', 'LAT', 'LON'], //set to null for field names instead of custom header names
+                                 'There are no items to list...');
+        
+    
+    
+    
 
-    });
+    dt.load(data1);
+
+    
+
+
+}
+
+    
+
+function callTable()
+{
 
 }
 
 //elasticsearch counting all vessels in latlong area. If not set latlong = max lat, max lon
 
-function countVessels(callback, latlong) {
+function countVessels(callback, callback2, latlong) {
 
         var topleftlat = 89.00;
         var topleftlon = -180.00;
@@ -46,9 +60,10 @@ function countVessels(callback, latlong) {
 
 
 
-    client.count({
+    client.search({
         index: 'ais-*',
         type: 'vessel',
+        size: 100,
         body: {
 
             "query": {
@@ -96,15 +111,22 @@ function countVessels(callback, latlong) {
             }
         }
 
-    }, function (err, response) {
+    }, function (err, response, _respcode) {
         //do callback function after finishing countVessels 
-        callback(response.count)
+        
+        if(err != undefined)
+        {
+            alert("Elasticsearch hasn't been started or is not ready yet")
+        }
+        callback(response.hits.total)
+        callback2(response)
     });
 }
 $(function () {
+     
     //on start count all vessels
     var latlong = undefined
-    countVessels(VesselTableCounter, latlong)
+    countVessels(VesselTableCounter, getAllVessels, latlong)
 
 })
 //create table content for html index 
