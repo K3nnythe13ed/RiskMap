@@ -29,6 +29,11 @@
 			right: 0;
 			bottom: 0;
 		}
+		#kibana {
+			position: absolute;
+			left:85%;
+			top:0;
+		}
 	</style>
 </head>
 
@@ -68,7 +73,12 @@
 
 	<script src="scripts/layer-style.js"></script>
 
-
+<div id="kibana">
+<table id="vesselcount">
+	</table>
+	
+	<iframe src="http://localhost:5601/app/kibana#/visualize/edit/ais-metric?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:'2016-11-08T23:00:00.000Z',mode:absolute,to:'2016-11-09T22:59:59.999Z'))&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count)),listeners:(),params:(fontSize:10,handleNoResults:!t),title:ais-metric,type:metric))" height="100" width="200"></iframe>
+	</div>
 	<div id="basemaps-wrapper" class="leaflet-bar">
 		<table>
 			<tr>
