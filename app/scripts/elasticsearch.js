@@ -1,5 +1,5 @@
 var allTitles = [];
-
+//get all Vessels in elasticsearch for later use
 function getAllVessels() {
     const documents = [];
     client.search({
@@ -26,14 +26,26 @@ function getAllVessels() {
     });
 
 }
+
+//elasticsearch counting all vessels in latlong area. If not set latlong = max lat, max lon
+
 function countVessels(callback, latlong) {
 
-var topleftlat = latlong[0].lat;
-var topleftlon = latlong[0].lng;
-var bottomrightlat = latlong[2].lat;
-var bottomrightlon = latlong[2].lng;
-console.log(topleftlon)
-console.log(bottomrightlat)
+        var topleftlat = 89.00;
+        var topleftlon = -180.00;
+        var bottomrightlat = -90.00;
+        var bottomrightlon = 180.00;
+    if (typeof latlong != "undefined") {
+
+
+         topleftlat = latlong[1].lat;
+         topleftlon = latlong[1].lng;
+         bottomrightlat = latlong[3].lat;
+         bottomrightlon = latlong[3].lng;
+    }
+
+
+
     client.count({
         index: 'ais-*',
         type: 'vessel',
@@ -64,19 +76,19 @@ console.log(bottomrightlat)
                             }
                         },
                         {
-                                "geo_bounding_box": {
-                                    "LOCATION": {
-                                        "top_left": {
-                                            "lat": 52.00889351616824,
-                                            "lon": 4.073730460368097
-                                        },
-                                        "bottom_right": {
-                                            "lat": 51.95137521430851,
-                                            "lon": 4.178100577555597
-                                        }
+                            "geo_bounding_box": {
+                                "LOCATION": {
+                                    "top_left": {
+                                        "lat": topleftlat,
+                                        "lon": topleftlon
+                                    },
+                                    "bottom_right": {
+                                        "lat": bottomrightlat,
+                                        "lon": bottomrightlon
                                     }
                                 }
-                            
+                            }
+
                         },
                     ],
                     "must_not": []
@@ -85,13 +97,17 @@ console.log(bottomrightlat)
         }
 
     }, function (err, response) {
+        //do callback function after finishing countVessels 
         callback(response.count)
     });
 }
 $(function () {
-    countVessels(VesselTableCounter)
+    //on start count all vessels
+    var latlong = undefined
+    countVessels(VesselTableCounter, latlong)
 
 })
+//create table content for html index 
 function VesselTableCounter(response) {
 
     var kibanatable = document.getElementById("vesselcount");
@@ -108,6 +124,7 @@ function VesselTableCounter(response) {
     tbdy.appendChild(tr);
     kibanatable.appendChild(tbdy);
 }
+// replace value of table on new draw
 function replaceTableValue(response) {
 
     var kibanatable = document.getElementById("vesselcount");

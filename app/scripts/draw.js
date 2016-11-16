@@ -24,8 +24,7 @@ map.addControl(drawControl);
 map.on('draw:created', function (e) {
     var type = e.layerType,
         layer = e.layer;
-        
-
+        //on create do elasticsearch function countVessels input(function replaceTableValue as callback, layer latlongs)
         countVessels(replaceTableValue, layer.getLatLngs())
         
 
