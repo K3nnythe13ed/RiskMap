@@ -53,8 +53,8 @@ function countVessels(callback, callback2, latlong) {
             "query": {
                 "bool": {
                     "must": [
-                        {
-                            "term": { "TYPE": "70" }
+                         {
+                            "terms": { "TYPE": ["70", "71", "72", "73", "74", "75", "76", "77", "78", "89", "80", "81", "82", "83", "84", "85", "86", "88", "88", "89", "90"] }
                         },
                         {
                             "query_string": {
