@@ -1,6 +1,7 @@
-$(function () {
     //call function on start
-    var datavalue = demoAis;
+    function createPlayback()
+    {
+    var datavalue = shipCollection;
     var newdate = datavalue[0].properties.time[0]
 
 
@@ -118,8 +119,7 @@ $(function () {
         }
     }
 
-});
-
+}
 var playbackitem;
 //change Speed of playback
 function changeSpeed(value) {

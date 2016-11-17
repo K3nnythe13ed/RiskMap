@@ -19,7 +19,7 @@ function getAllVessels(resp) {
         dt.clear();
     }
     var data1 = []
-
+    console.log(resp)
     for (let i = 0; i < resp.hits.hits.length; i++) {
         var pushdata = {
             field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4: i + 1, field5: resp.hits.hits[i]._source.NAME, field6: resp.hits.hits[i]._source.IMO
@@ -53,6 +53,9 @@ function countVessels(callback, callback2, latlong) {
             "query": {
                 "bool": {
                     "must": [
+                        {
+                            "term": { "TYPE": "70" }
+                        },
                         {
                             "query_string": {
                                 "query": "*",
