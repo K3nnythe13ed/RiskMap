@@ -4,7 +4,7 @@ Requires:
 - npm install -g gulp
 - npm install -g gulp-open
 
-Repo Allianz clone: https://github.com/K3nnythe13ed/allianz
+Repo docker-elk-Riskmap clone: https://github.com/K3nnythe13ed/allianz
 
 
 Using:
