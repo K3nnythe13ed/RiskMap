@@ -36,38 +36,44 @@
 			top: 0;
 		}
 		
+		#vesselcount {
+			font-weight: bold;
+		}
+		
 		div.searchtable table {
-			width: 200px;
+			width: 256px;
 			height: 85%;
 			/* 140px * 5 column + 16px scrollbar width */
 			font-size: 10px;
 			border-spacing: 0;
 		}
 		
-		div.searchtable tbody{
+		div.searchtable tbody {
 			display: block;
 		}
-
+		
 		div.searchtable thead tr {
-			display:block;
+			display: block;
 		}
-		div.searchtable thead td {
-			width: 40px;
-		}
+		
+	
 		
 		div.searchtable tbody {
 			height: 400px;
+			width: 256px;
 			overflow-y: auto;
 			overflow-x: auto;
 		}
 		
-		div.searchtable tbody td,
-		div.searchtable thead th {
-			width: 200px;
+		
+		div.searchtable td {
+			width: 40px;
+			padding: 7px;
 		}
 		
+		
 		div.searchtable thead th:last-child {
-			width: 156px;
+			width: 266px;
 			/* 140px + 16px scrollbar width */
 		}
 	</style>
@@ -81,13 +87,13 @@
 
 	<div id="timeline"></div>
 
-
+	<!--Map script -->
 	<script>
 		map = L.map('map').setView([50.7343800, 7.0954900], 7);
 		
 		 </script>
 
-
+	<!--Required scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.js"></script>
 	<script src="plugins/Playback/dist/LeafletPlayback.js"></script>
 	<script src="plugins/TableCreator/createTable.js"></script>
@@ -98,25 +104,28 @@
 			host: 'localhost:9200'
 		});
 	</script>
+	<!--Data scripts -->
 	<script src="data/locations.js"></script>
 	<script src="data/ais-demo.js"></script>
+	<!--Executable scripts -->
 	<script src="scripts/elasticsearch.js"></script>
-
 	<script src="scripts/leaflet-playback-marker.js"></script>
 	<script src="scripts/show-location.js"></script>
-
 	<script src="scripts/draw.js"></script>
-
 	<script src="scripts/layer-style.js"></script>
-
+	<!--ID Kibana aligning all objects taken from elasticsearch -->
 	<div id="kibana">
+
+		<!-- Amount of Vessels counted in Area -->
 		<table id="vesselcount">
 		</table>
+		<!-- List of all Vessels in Area -->
 		<div class="searchtable">
 			<table id="vesselsearch" border="1">
 			</table>
 		</div>
 	</div>
+	<!-- option menu for leaflet Map -->
 	<div id="basemaps-wrapper" class="leaflet-bar">
 		<table>
 			<tr>

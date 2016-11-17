@@ -1,7 +1,12 @@
 var allTitles = [];
 //get all Vessels in elasticsearch for later use
     var dt;
-   
+   $(document).ready(function(e) {
+        dt = dynamicTable.config('vesselsearch', 
+                                 ['field4','field1','field6', 'field5', 'field2', 'field3'], 
+                                 ['Nr.', 'MMSI', 'IMO', 'Name', 'LAT', 'LON'], //set to null for field names instead of custom header names
+                                 'There are no items to list...');
+   })
 function getAllVessels(resp) {
     if(dt != undefined)
     {
@@ -13,15 +18,12 @@ function getAllVessels(resp) {
             
         var pushdata = {
            
-            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4:i+1
+            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4:i+1, field5: resp.hits.hits[i]._source.NAME, field6: resp.hits.hits[i]._source.IMO
         }
            
             data1.push(pushdata);
         }
-        dt = dynamicTable.config('vesselsearch', 
-                                 ['field4','field1', 'field2', 'field3'], 
-                                 ['Nr.', 'MMSI', 'LAT', 'LON'], //set to null for field names instead of custom header names
-                                 'There are no items to list...');
+       
         
     
     

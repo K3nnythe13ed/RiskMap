@@ -1,8 +1,8 @@
 
 
 var editableLayers = new L.FeatureGroup();
-map.addLayer(editableLayers);
-
+    map.addLayer(editableLayers);
+var layer;
 var options = {
     edit: {
         featureGroup: editableLayers //REQUIRED!!
@@ -19,8 +19,13 @@ var options = {
 var drawControl = new L.Control.Draw(options);
 map.addControl(drawControl);
 
+map.on(L.Draw.Event.DRAWSTART, function (e) {
+    
+    editableLayers.clearLayers();
+   
+})
 map.on(L.Draw.Event.CREATED, function (e) {
-
+  
         
         var type = e.layerType,
         layer = e.layer;
@@ -29,8 +34,11 @@ map.on(L.Draw.Event.CREATED, function (e) {
     countVessels(replaceTableValue, getAllVessels, layer.getLatLngs())
 
     editableLayers.addLayer(layer);
-
+    
     // Do whatever else you need to. (save to db, add to map etc)
 });
-    map.on('draw:deleted', update);
+
+    map.on(L.Draw.Event.DELETESTART, function (e) {
+      editableLayers.clearLayers();
+    });
 // Initialise the draw control and pass it the FeatureGroup of editable layers
