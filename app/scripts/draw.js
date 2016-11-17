@@ -24,6 +24,7 @@ map.on(L.Draw.Event.DRAWSTART, function (e) {
     editableLayers.clearLayers();
 
 })
+var layer_leaflet_id;
 map.on(L.Draw.Event.CREATED, function (e) {
 
     console.log(e)
@@ -33,7 +34,7 @@ map.on(L.Draw.Event.CREATED, function (e) {
     countVessels(replaceTableValue, getAllVessels, layer.getLatLngs())
 
     editableLayers.addLayer(layer);
-
+    layer_leaflet_id = layer._leaflet_id
     // Do whatever else you need to. (save to db, add to map etc)
 });
 
@@ -44,14 +45,10 @@ map.on(L.Draw.Event.DELETESTART, function (e) {
 });
 
 map.on(L.Draw.Event.EDITED, function (e) {
-    console.log(e);
-    i=0;
-    while(e.layers._layers[i] === undefined)
-    {
-        i++;
-    }
-    layer = e.layers._layers[i]._latlngs;
-        countVessels(replaceTableValue, getAllVessels, layer)
+
+   
+    latlong = e.layers._layers[layer_leaflet_id]._latlngs;
+        countVessels(replaceTableValue, getAllVessels, latlong)
 
 
 });
