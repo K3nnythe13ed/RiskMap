@@ -26,8 +26,6 @@ map.on(L.Draw.Event.DRAWSTART, function (e) {
 })
 var layer_leaflet_id;
 map.on(L.Draw.Event.CREATED, function (e) {
-
-    console.log(e)
     var type = e.layerType,
         layer = e.layer;
     //on create do elasticsearch function countVessels input(function replaceTableValue as callback, layer latlongs)
@@ -46,9 +44,8 @@ map.on(L.Draw.Event.DELETESTART, function (e) {
 
 map.on(L.Draw.Event.EDITED, function (e) {
 
-   
     latlong = e.layers._layers[layer_leaflet_id]._latlngs;
-        countVessels(replaceTableValue, getAllVessels, latlong)
+    countVessels(replaceTableValue, getAllVessels, latlong)
 
 
 });

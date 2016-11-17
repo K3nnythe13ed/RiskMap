@@ -1,66 +1,48 @@
-var allTitles = [];
+//on start count all vessels
+$(function () {
+
+    var latlong = undefined
+    countVessels(VesselTableCounter, getAllVessels, latlong)
+
+})
+
 //get all Vessels in elasticsearch for later use
-    var dt;
-   $(document).ready(function(e) {
-        dt = dynamicTable.config('vesselsearch', 
-                                 ['field4','field1','field6', 'field5', 'field2', 'field3'], 
-                                 ['Nr.', 'MMSI', 'IMO', 'Name', 'LAT', 'LON'], //set to null for field names instead of custom header names
-                                 'There are no items to list...');
-   })
+var dt;
+$(document).ready(function (e) {
+    dt = dynamicTable.config('vesselsearch',
+        ['field4', 'field1', 'field6', 'field5', 'field2', 'field3'],
+        ['Nr.', 'MMSI', 'IMO', 'Name', 'LAT', 'LON'], //set to null for field names instead of custom header names
+        'There are no items to list...');
+})
 function getAllVessels(resp) {
-    if(dt != undefined)
-    {
+    if (dt != undefined) {
         dt.clear();
     }
-   var data1 =[]
-    
-        for (let i = 0; i < resp.hits.hits.length; i++) {
-            
+    var data1 = []
+
+    for (let i = 0; i < resp.hits.hits.length; i++) {
         var pushdata = {
-           
-            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4:i+1, field5: resp.hits.hits[i]._source.NAME, field6: resp.hits.hits[i]._source.IMO
+            field1: resp.hits.hits[i]._source.MMSI, field2: resp.hits.hits[i]._source.LOCATION.lat, field3: resp.hits.hits[i]._source.LOCATION.lon, field4: i + 1, field5: resp.hits.hits[i]._source.NAME, field6: resp.hits.hits[i]._source.IMO
         }
-           
-            data1.push(pushdata);
-        }
-       
-        
-    
-    
-    
-
+        data1.push(pushdata);
+    }
     dt.load(data1);
-
-    
-
-
 }
-
-    
-
-function callTable()
-{
-
-}
-
 //elasticsearch counting all vessels in latlong area. If not set latlong = max lat, max lon
 
 function countVessels(callback, callback2, latlong) {
 
-        var topleftlat = 89.00;
-        var topleftlon = -180.00;
-        var bottomrightlat = -90.00;
-        var bottomrightlon = 180.00;
+    var topleftlat = 89.00;
+    var topleftlon = -180.00;
+    var bottomrightlat = -90.00;
+    var bottomrightlon = 180.00;
     if (typeof latlong != "undefined") {
 
-
-         topleftlat = latlong[1].lat;
-         topleftlon = latlong[1].lng;
-         bottomrightlat = latlong[3].lat;
-         bottomrightlon = latlong[3].lng;
+        topleftlat = latlong[1].lat;
+        topleftlon = latlong[1].lng;
+        bottomrightlat = latlong[3].lat;
+        bottomrightlon = latlong[3].lng;
     }
-
-
 
     client.search({
         index: 'ais-*',
@@ -115,29 +97,19 @@ function countVessels(callback, callback2, latlong) {
 
     }, function (err, response, _respcode) {
         //do callback function after finishing countVessels 
-        
-        if(err != undefined)
-        {
+        if (err != undefined) {
             alert("Elasticsearch hasn't been started or is not ready yet")
         }
         callback(response.hits.total)
         callback2(response)
     });
 }
-$(function () {
-     
-    //on start count all vessels
-    var latlong = undefined
-    countVessels(VesselTableCounter, getAllVessels, latlong)
 
-})
 //create table content for html index 
 function VesselTableCounter(response) {
 
     var kibanatable = document.getElementById("vesselcount");
-
     var tbdy = document.createElement('tbody');
-
     var tr = document.createElement('tr');
     var tdp = document.createElement('td');
     var tdc = document.createElement('td');
