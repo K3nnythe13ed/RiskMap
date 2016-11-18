@@ -1,7 +1,7 @@
-    //call function on start
-    function createPlayback()
-    {
+//call function on start
+function createPlayback() {
     var datavalue = shipCollection;
+   // var datavalue = demoAis;
     var newdate = datavalue[0].properties.time[0]
 
 
@@ -105,6 +105,8 @@
     playback.setSpeed(1);
 
 
+
+
     // Set timeline time change event, so cursor is set after moving custom time (blue)
     timeline.on('timechange', onCustomTimeChange);
 
@@ -134,6 +136,8 @@ function handleFadeout(cb) {
 
 
 }
+
+
 //change speed of playback by clicking the faster button
 function changeFaster() {
     var speed = playbackitem.getSpeed();

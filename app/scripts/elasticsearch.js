@@ -53,7 +53,7 @@ function countVessels(callback, callback2, latlong) {
             "query": {
                 "bool": {
                     "must": [
-                         {
+                        {
                             "terms": { "TYPE": ["70", "71", "72", "73", "74", "75", "76", "77", "78", "89", "80", "81", "82", "83", "84", "85", "86", "88", "88", "89", "90"] }
                         },
                         {
@@ -71,8 +71,8 @@ function countVessels(callback, callback2, latlong) {
                         {
                             "range": {
                                 "@timestamp": {
-                                    "gte": 1451602800000,
-                                    "lte": 1483225199999,
+                                    "gte": 1477954800000,
+                                    "lte": 1480546799999,
                                     "format": "epoch_millis"
                                 }
                             }

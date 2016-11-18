@@ -36,6 +36,10 @@ function createVesselforCollection(resp) {
 }
 
 function searchAllforView(callback, playback) {
+    var today = new Date();
+    var todayToEpoch = today.getTime();
+    var priorDate = new Date().setDate(today.getDate()-30)
+    
     client.search({
         index: 'ais-*',
         type: 'vessel',
@@ -43,8 +47,6 @@ function searchAllforView(callback, playback) {
         body: {
 
             "query": {
-
-
                 "bool": {
                     "must": [
                         {
@@ -65,8 +67,8 @@ function searchAllforView(callback, playback) {
                         {
                             "range": {
                                 "@timestamp": {
-                                    "gte": 1451602800000,
-                                    "lte": 1483225199999,
+                                    "gte": priorDate,
+                                    "lte": todayToEpoch,
                                     "format": "epoch_millis"
                                 }
                             }

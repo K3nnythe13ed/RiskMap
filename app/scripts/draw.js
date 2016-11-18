@@ -22,6 +22,8 @@ map.addControl(drawControl);
 map.on(L.Draw.Event.DRAWSTART, function (e) {
 
     editableLayers.clearLayers();
+    var latlong = undefined
+    countVessels(replaceTableValue, getAllVessels, latlong)
 
 })
 var layer_leaflet_id;
